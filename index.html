@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login con Firebase</title>
+
+  <!-- Firebase SDKs desde CDN -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+</head>
+<body>
+  <h2>Iniciar sesión</h2>
+  <input type="text" id="username" placeholder="Usuario" value="Elpaco" />
+  <input type="password" id="password" placeholder="Contraseña" value="Paco12345" />
+  <button id="btnLogin">Entrar</button>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyDQQBYF4XsQPNI4nuCNPZZeqQGstKlEpUI",
+      authDomain: "webstream-2161a.firebaseapp.com",
+      projectId: "webstream-2161a",
+      storageBucket: "webstream-2161a.appspot.com",
+      messagingSenderId: "71757392426",
+      appId: "1:71757392426:web:a3a75244c20927177b7153"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    const usuarios = {
+      "Elpaco": "paquito76787678@gmail.com"
+    };
+
+    document.getElementById('btnLogin').addEventListener('click', () => {
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value;
+
+      const email = usuarios[username];
+      if (!email) {
+        alert("Usuario no encontrado");
+        return;
+      }
+
+      auth.signInWithEmailAndPassword(email, password)
+        .then(() => {
+          window.location.href = 'stream.html';
+        })
+        .catch(error => {
+          alert("❌ Error de inicio de sesión: " + error.message);
+        });
+    });
+  </script>
+</body>
+</html>
