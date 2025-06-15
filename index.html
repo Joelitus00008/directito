@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Login con Firebase</title>
+</head>
+<body>
+  <h2>Iniciar sesión</h2>
+  <input type="email" id="email" placeholder="Correo electrónico" value="paquito@ejemplo.com">
+  <input type="password" id="password" placeholder="Contraseña" value="Samba12345">
+  <button onclick="login()">Entrar</button>
+
+  <script type="module">
+    import { auth, signInWithEmailAndPassword } from './firebase.js';
+
+    function login() {
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      signInWithEmailAndPassword(auth, email, password)
+        .then(() => {
+          window.location.href = 'stream.html';
+        })
+        .catch((error) => {
+          alert("❌ Error de inicio de sesión: " + error.message);
+        });
+    }
+  </script>
+</body>
+</html>
