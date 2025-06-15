@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Stream Privado</title>
+  <script src="script.js" defer></script>
+</head>
+<body onload="startTimer()">
+  <h2>Bienvenido a la transmisión privada de Paco</h2>
+
+  <!-- Reproductor YouTube (embed) -->
+  <iframe
+    id="player"
+    width="800"
+    height="400"
+    src="https://www.youtube.com/embed/live_stream?channel=UCejAwZbhEsNfuIMXFq3IlUg&autoplay=1"
+    title="Stream privado"
+    frameborder="0"
+    allow="autoplay; encrypted-media"
+    allowfullscreen
+  ></iframe>
+
+  <!-- Bloque de pago -->
+  <div id="pago" style="display:none;">
+    <h3>⏰ Tu prueba gratuita terminó</h3>
+    <p>Para seguir viendo, realiza un pago de 1€.</p>
+    <a href="https://www.paypal.me/tuusuario/1" target="_blank">Pagar 1€ con PayPal</a>
+  </div>
+</body>
+</html>
